@@ -1,0 +1,93 @@
+#
+# Drop everything
+#
+drop * 
+#
+# Here we start specifying what we want to store
+#
+keep run
+keep luminosityBlock
+keep event
+#
+keep Generator_*
+#
+keep genWeight
+keep LHEWeight_originalXWGTUP
+keep nLHEPdfWeight
+keep LHEPdfWeight
+keep nLHEReweightingWeight
+keep LHEReweightingWeight
+keep nLHEScaleWeight
+keep LHEScaleWeight
+keep nPSWeight
+keep PSWeight
+#
+keep genTtbarId
+#
+#
+# In NanoAODv5
+#
+keep nCorrT1METJet
+keep CorrT1METJet_*
+keep GenMET_*
+keep MET_*
+keep PuppiMET_*
+keep RawMET_*
+keep TkMET_*
+keep CaloMET_*
+keep ChsMET_*
+#
+keep LHE_*
+#
+keep btagWeight_CSVV2
+keep btagWeight_CMVA
+#
+keep Pileup_*
+keep PV_*
+#
+keep Flag_*
+#
+keep nElectron
+keep nMuon
+keep nJet
+keep nFatJet
+keep nSubJet
+keep nGenJet
+keep nGenJetAK8
+keep nSubGenJetAK8
+keep nGenPart
+#
+keep Electron_*
+keep Muon_*
+keep Jet_*
+keep FatJet_*
+keep SubJet_*
+keep GenJet_*
+keep GenJetAK8_*
+keep SubGenJetAK8_*
+keep GenPart_*
+#
+keep nTrigObj
+keep TrigObj_*
+#
+# https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2016
+# https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2017#Recommendations_for_2017_data_an
+# https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2018
+#
+keep HLT_IsoMu24
+keep HLT_IsoTkMu24
+keep HLT_IsoMu27
+keep HLT_IsoTkMu27
+keep HLT_Mu50
+keep HLT_TkMu50
+#
+# https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary
+#
+keep HLT_Ele27_WPTight_Gsf
+keep HLT_Ele32_WPTight_Gsf
+keep HLT_Ele105_CaloIdVT_GsfTrkIdT
+keep HLT_Ele115_CaloIdVT_GsfTrkIdT
+keep HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50
+keep HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165
+keep HLT_Photon175
+
