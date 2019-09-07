@@ -5,9 +5,9 @@ config = config()
 #
 # Set version number
 #
-version="OneLepNanoSkim_v0"
+version="v0"
 
-config.General.requestName     = 'XZVllqqPostNanoMC16_'+version
+config.General.requestName     = 'JetTagPostNanoMC16_'+version
 #
 # Change this PATH where the crab directories are stored
 # Example: config.General.workArea = '/afs/cern.ch/work/n/nbinnorj/private/crab_projects/'
@@ -34,7 +34,7 @@ config.JobType.sendPythonFolder  = True
 config.JobType.outputFiles = ['tree.root','histo.root']
 
 config.Data.inputDataset     = '/WprimeToWZToWhadZlep_width0p1_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8/RunIISummer16NanoAODv5-PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/NANOAODSIM' #Dummy
-config.Data.outputDatasetTag = 'XZVllqqPostNanoMC16_Test_v0' # Dummy
+config.Data.outputDatasetTag = 'JetTagPostNanoMC16_Test_v0' # Dummy
 
 config.Data.splitting    = 'FileBased'
 config.Data.unitsPerJob  = 1
@@ -42,7 +42,7 @@ config.Data.publication  = False
 config.Data.allowNonValidInputDataset = True
 config.JobType.allowUndistributedCMSSW = True
 
-config.Data.outLFNDirBase  = '/store/user/nbinnorj/CRABOUTPUT_XZVllqq_'+version+'/'
+config.Data.outLFNDirBase  = '/store/user/nbinnorj/CRABOUTPUT_JetTag_'+version+'/'
 config.Site.storageSite    = 'T2_CH_CERNBOX'
 
 config.Data.ignoreLocality   = True
