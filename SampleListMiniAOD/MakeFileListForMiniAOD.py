@@ -43,6 +43,7 @@ samples["ZprimeWWM3000"] = "/ZprimeToWW_narrow_M-3000_13TeV-madgraph/RunIISummer
 samples["ZprimeWWM3500"] = "/ZprimeToWW_narrow_M-3500_13TeV-madgraph/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
 samples["ZprimeWWM4000"] = "/ZprimeToWW_narrow_M-4000_13TeV-madgraph/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
 samples["ZprimeWWM4500"] = "/ZprimeToWW_narrow_M-4500_13TeV-madgraph/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
+samples["QCDPt15To7000"] = "/QCD_Pt-15to7000_TuneCUETP8M1_FlatP6_13TeV_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM"
 
 for sample in samples:
   shortName = sample
