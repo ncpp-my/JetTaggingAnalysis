@@ -1,0 +1,3 @@
+/store/mc/RunIISummer16MiniAODv2/ZprimeToWW_narrow_M-3500_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/66003CA9-94BE-E611-86C9-B083FED426E5.root
+/store/mc/RunIISummer16MiniAODv2/ZprimeToWW_narrow_M-3500_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/525A2928-92BE-E611-8E81-0CC47A1E0DA6.root
+/store/mc/RunIISummer16MiniAODv2/ZprimeToWW_narrow_M-3500_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/70414548-92BE-E611-99CF-002590D5FFF2.root

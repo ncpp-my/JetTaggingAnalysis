@@ -1,0 +1,1 @@
+/store/mc/RunIISummer16MiniAODv2/ZprimeToWW_narrow_M-4500_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/42A253B2-3BBF-E611-AA91-002590DE6E78.root
