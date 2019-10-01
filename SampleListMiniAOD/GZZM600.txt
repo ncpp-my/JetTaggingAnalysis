@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16MiniAODv2/BulkGravToZZToZlepZhad_narrow_M-600_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/600E5757-9EC0-E611-8152-0CC47A4D75F2.root
+/store/mc/RunIISummer16MiniAODv2/BulkGravToZZToZlepZhad_narrow_M-600_13TeV-madgraph/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/E8963865-9EC0-E611-AE58-0CC47A4C8ED8.root
