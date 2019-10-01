@@ -88,10 +88,16 @@ def HarvestMiniAOD(inFilePath, outFilePath):
   nFatJetSizeMax = 10
   nFatJetString  = 'nFatJet'
   nFatJet   = bookIntBranch(TreeFatJet, nFatJetString)
-  FatJetPt  = bookFloatArrayBranch(TreeFatJet, 'FatJet_Pt',  nFatJetString, nFatJetSizeMax)
-  FatJetEta = bookFloatArrayBranch(TreeFatJet, 'FatJet_Eta', nFatJetString, nFatJetSizeMax)
-  FatJetPhi = bookFloatArrayBranch(TreeFatJet, 'FatJet_Phi', nFatJetString, nFatJetSizeMax)
-  FatJetM   = bookFloatArrayBranch(TreeFatJet, 'FatJet_M'  , nFatJetString, nFatJetSizeMax)
+  FatJetPt  = bookFloatArrayBranch(TreeFatJet, 'FatJet_pt',  nFatJetString, nFatJetSizeMax)
+  FatJetEta = bookFloatArrayBranch(TreeFatJet, 'FatJet_eta', nFatJetString, nFatJetSizeMax)
+  FatJetPhi = bookFloatArrayBranch(TreeFatJet, 'FatJet_phi', nFatJetString, nFatJetSizeMax)
+  FatJetM   = bookFloatArrayBranch(TreeFatJet, 'FatJet_m'  , nFatJetString, nFatJetSizeMax)
+
+  # FatJetSoftdropMass = bookFloatArrayBranch(TreeFatJet, 'FatJet_msoftdrop',  nFatJetString, nFatJetSizeMax) 
+  # FatJetTau1         = bookFloatArrayBranch(TreeFatJet, 'FatJet_tau1',  nFatJetString, nFatJetSizeMax)      
+  # FatJetTau2         = bookFloatArrayBranch(TreeFatJet, 'FatJet_tau2',  nFatJetString, nFatJetSizeMax)      
+  # FatJetTau3         = bookFloatArrayBranch(TreeFatJet, 'FatJet_tau3',  nFatJetString, nFatJetSizeMax)      
+  
   #
   # 
   #
@@ -112,7 +118,8 @@ def HarvestMiniAOD(inFilePath, outFilePath):
   # Set max number of events to process
   # Set to -1 if you want to run over all events
   #
-  maxevents = -1
+  # maxevents = -1
+  maxevents = 5
   
   #
   # The Event Loop
@@ -144,6 +151,19 @@ def HarvestMiniAOD(inFilePath, outFilePath):
       FatJetEta[i] = jetP4.Eta()
       FatJetPhi[i] = jetP4.Phi()
       FatJetM[i]   = jetP4.M()
+      print "New Jet"
+      for ufl in jet.userFloatNames():
+        print  "\t%s %s" % (ufl, jet.userFloat(ufl))
+
+
+      #
+      # For MiniAODv2
+      # https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2016#Jets
+      # https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetWtagging#Recipes_to_obtain_the_PUPPI_soft
+      # FatJetSoftdropMass [i] = jet.userFloat("ak8PFJetsPuppiValueMap:mass");
+      # FatJetTau1[i] = jet.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau1");
+      # FatJetTau2[i] = jet.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau2");
+      # FatJetTau3[i] = jet.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau3");
 
       nFatJet[0] += 1
     
