@@ -12,7 +12,6 @@ dbs = DbsApi('https://cmsweb.cern.ch/dbs/prod/global/DBSReader')
 
 samples = collections.OrderedDict()
 
-
 samples["WprimeWZM600"]  = "/WprimeToWZToWhadZhad_narrow_M-600_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
 samples["WprimeWZM800"]  = "/WprimeToWZToWhadZhad_narrow_M-800_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
 samples["WprimeWZM1000"] = "/WprimeToWZToWhadZhad_narrow_M-1000_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
@@ -32,6 +31,46 @@ samples["WprimeWZM6500"] = "/WprimeToWZToWhadZhad_narrow_M-6500_TuneCP5_13TeV-ma
 samples["WprimeWZM7000"] = "/WprimeToWZToWhadZhad_narrow_M-7000_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
 samples["WprimeWZM7500"] = "/WprimeToWZToWhadZhad_narrow_M-7500_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
 samples["WprimeWZM8000"] = "/WprimeToWZToWhadZhad_narrow_M-8000_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+
+samples["GToZZM800"]     = "/BulkGravToZZToZhadZhad_narrow_M-800_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM1000"]    = "/BulkGravToZZToZhadZhad_narrow_M-1000_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM1200"]    = "/BulkGravToZZToZhadZhad_narrow_M-1200_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM1400"]    = "/BulkGravToZZToZhadZhad_narrow_M-1400_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM1600"]    = "/BulkGravToZZToZhadZhad_narrow_M-1600_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM1800"]    = "/BulkGravToZZToZhadZhad_narrow_M-1800_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM2000"]    = "/BulkGravToZZToZhadZhad_narrow_M-2000_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM3000"]    = "/BulkGravToZZToZhadZhad_narrow_M-3000_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+samples["GToZZM4000"]    = "/BulkGravToZZToZhadZhad_narrow_M-4000_13TeV-madgraph/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+
+# samples["ZprimeToTTM500"]  = "/ZprimeToTT_M500_W5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM50_ext1"]  = "/ZprimeToTT_M500_W5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM750"]  = "/ZprimeToTT_M750_W7p5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM750_ext1"]  = "/ZprimeToTT_M750_W7p5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM1000"] = "/ZprimeToTT_M1000_W10_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM1000_ext1"] = "/ZprimeToTT_M1000_W10_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM1250"] = "/ZprimeToTT_M1250_W12p5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM1250_ext1"] = "/ZprimeToTT_M1250_W12p5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM1500"] = "/ZprimeToTT_M1500_W15_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM1500_ext1"] = "/ZprimeToTT_M1500_W15_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM2000"] = "/ZprimeToTT_M2000_W20_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM2000_ext1"] = "/ZprimeToTT_M2000_W20_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM2500"] = "/ZprimeToTT_M2500_W25_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM2500_ext1"] = "/ZprimeToTT_M2500_W25_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM3000"] = "/ZprimeToTT_M3000_W30_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM3000_ext1"] = "/ZprimeToTT_M3000_W30_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM3500"] = "/ZprimeToTT_M3500_W35_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM3500_ext1"] = "/ZprimeToTT_M3500_W35_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM4000"] = "/ZprimeToTT_M4000_W40_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM4000_ext1"] = "/ZprimeToTT_M4000_W40_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM5000"] = "/ZprimeToTT_M5000_W50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM5000_ext1"] = "/ZprimeToTT_M5000_W50_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM6000"] = "/ZprimeToTT_M6000_W60_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM6000_ext1"] = "/ZprimeToTT_M6000_W60_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM7000"] = "/ZprimeToTT_M7000_W70_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM7000_ext1"] = "/ZprimeToTT_M7000_W70_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+# samples["ZprimeToTTM8000"] = "/ZprimeToTT_M8000_W80_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
+# samples["ZprimeToTTM8000_ext1"] = "/ZprimeToTT_M8000_W80_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7_ext1-v1/NANOAODSIM"
+
 samples["QCDPt15To7000"] = "/QCD_Pt-15to7000_TuneCP5_Flat2017_13TeV_pythia8/RunIIFall17NanoAODv5-PU2017_12Apr2018_Nano1June2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
 
 for sample in samples:
