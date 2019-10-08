@@ -1,0 +1,11 @@
+<use   name="boost"/>
+<use   name="rootcore"/>
+<use   name="roothistmatrix"/>
+<use   name="CommonTools/Utils"/>
+<use   name="PhysicsTools/Utilities"/>
+<use   name="DataFormats/FWLite"/>
+<use   name="NanoAODAnalysis/NanoAODAnalyzer"/>
+<export>
+  <lib   name="1"/>
+</export>
+
