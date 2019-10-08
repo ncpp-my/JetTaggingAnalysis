@@ -2,14 +2,14 @@
 
 
 SAMPLES=(
-"ZprimeWWM600"
-"ZprimeWWM800"
-"ZprimeWWM1000"
-"ZprimeWWM1200"
+# "ZprimeWWM600"
+# "ZprimeWWM800"
+# "ZprimeWWM1000"
+# "ZprimeWWM1200"
 # "ZprimeWWM1400"
 # "ZprimeWWM1600"
 # "ZprimeWWM1800"
-# "ZprimeWWM2000"
+"ZprimeWWM2000"
 # "ZprimeWWM2500"
 # "ZprimeWWM3000"
 # "ZprimeWWM3500"
