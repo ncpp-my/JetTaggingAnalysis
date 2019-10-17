@@ -45,7 +45,7 @@ def getInputFiles(inputTextFile):
     for lfn in fpInput:
       lfn = lfn.strip()
       pfn = 'root://xrootd-cms.infn.it/' + lfn
-      print 'Adding ' + pfn
+      # print 'Adding ' + pfn
       files.append(pfn)
   return files
 
@@ -83,7 +83,7 @@ def bookFloatArrayBranch(tree, branchName, sizeBranchName, arraySize):
 #
 #
 ##########################################################
-def HarvestNanoAOD(inFilePath, outFilePath):
+def HarvestNanoAOD(inFileList, outFilePath):
   # 
   # Create the output file
   # 
@@ -120,7 +120,7 @@ def HarvestNanoAOD(inFilePath, outFilePath):
   # 
   # GenPart branch
   #   
-  nGenPartSizeMax = 200
+  nGenPartSizeMax = 400
   nGenPartString = 'nGenPart'
   nGenPart                = bookIntBranch(TreeFatJet, nGenPartString)
   GenPartPt               = bookFloatArrayBranch(TreeFatJet, 'GenPart_pt', nGenPartString, nGenPartSizeMax)
@@ -133,7 +133,7 @@ def HarvestNanoAOD(inFilePath, outFilePath):
   GenPartGenPartIdxMother = bookIntArrayBranch(TreeFatJet, 'GenPart_genPartIdxMother', nGenPartString, nGenPartSizeMax)
   # 
   # GenJetAK8 branch
-  #   
+  #     
   nGenJetAK8SizeMax = 10
   nGenJetAK8String = 'nGenJetAK8'
   nGenJetAK8                = bookIntBranch(TreeFatJet, nGenJetAK8String)
@@ -154,7 +154,9 @@ def HarvestNanoAOD(inFilePath, outFilePath):
   # SetupTChain
   # 
   tree = ROOT.TChain("Events")
-  tree.Add(inFilePath)
+  for inFilePath in inFileList:
+    print'Adding files: %s'%(inFilePath)
+    tree.Add(inFilePath)
   #
   # Use TChain and Setup TTreeReader.
   #
@@ -190,9 +192,18 @@ def HarvestNanoAOD(inFilePath, outFilePath):
       FatJetEta[i]              = fj_p4.Eta()
       FatJetPhi[i]              = fj_p4.Phi()
       FatJetM[i]                = fj_p4.M()     
-      FatJetTau21[i]            = fj.tau2/fj.tau1        
-      FatJetTau31[i]            = fj.tau3/fj.tau1       
-      FatJetTau32[i]            = fj.tau3/fj.tau2       
+      if fj.tau1 > 0:
+        FatJetTau21[i]          = fj.tau2/fj.tau1       
+      else: 
+        FatJetTau21[i]          = -1
+      if fj.tau1 > 0:
+        FatJetTau31[i]          = fj.tau3/fj.tau1       
+      else:
+        FatJetTau31[i]          = -1
+      if fj.tau2 > 0:
+        FatJetTau32[i]          = fj.tau3/fj.tau2       
+      else:
+        FatJetTau32[i]          = -1 
       FatJetDeepTagTvsQCD[i]    = fj.deepTag_TvsQCD
       FatJetDeepTagWvsQCD[i]    = fj.deepTag_WvsQCD
       FatJetDeepTagZvsQCD[i]    = fj.deepTag_ZvsQCD
@@ -281,24 +292,15 @@ def main(argv):
   print "List of NanoAOD input files from %s" %(inputTextFile)
   inFileList = getInputFiles(inputTextFile)
 
-  # maxfiles = -1
-  maxfiles = -3
   #
-  # Loop over files
+  # Create output tree filename
   #
-  for fNum, inFilePath in enumerate(inFileList):
-
-    if maxfiles > 0 and fNum > maxfiles:
-      break
-    #
-    # Create output tree filename
-    #
-    outFilePath = "%s%s_%s_%d.root" %(options.outputDir,options.outputPrefix,sample,fNum)
-    #
-    # Process each file
-    #
-    print 'Processing file ' + inFilePath
-    HarvestNanoAOD(inFilePath,outFilePath)
+  outFilePath = "%s%s_%s.root" %(options.outputDir,options.outputPrefix,sample)
+  #
+  # Process each file
+  #
+  print 'Processing files'
+  HarvestNanoAOD(inFileList,outFilePath)
 
   print "****************************************"
   print ""
