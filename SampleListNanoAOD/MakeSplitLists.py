@@ -30,7 +30,7 @@ def main(txtFileName, nGroupFiles=10):
 if __name__ == "__main__":
   
   txtFiles=[
-    ("QCDPt15To7000",2)
+    ("QCDPt15To7000",10)
     ]
 
   for txtFile in txtFiles:
