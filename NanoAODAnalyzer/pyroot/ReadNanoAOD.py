@@ -44,7 +44,11 @@ def getInputFiles(inputTextFile):
   with open(inputTextFile, 'r') as fpInput:
     for lfn in fpInput:
       lfn = lfn.strip()
-      pfn = 'root://xrootd-cms.infn.it/' + lfn
+      if lfn.startswith('#'):
+        print('skipping file %s' %(lfn))
+        continue
+      # pfn = 'root://xrootd-cms.infn.it/' + lfn
+      pfn = 'root://cms-xrd-global.cern.ch/' + lfn
       # print 'Adding ' + pfn
       files.append(pfn)
   return files
@@ -101,7 +105,7 @@ def HarvestNanoAOD(inFileList, outFilePath):
   #
   # FatJet branch
   #
-  nFatJetSizeMax = 10
+  nFatJetSizeMax = 20
   nFatJetString  = 'nFatJet'
   nFatJet                 = bookIntBranch(TreeFatJet, nFatJetString)
   FatJetPt                = bookFloatArrayBranch(TreeFatJet, 'FatJet_pt' ,  nFatJetString, nFatJetSizeMax)
@@ -120,7 +124,7 @@ def HarvestNanoAOD(inFileList, outFilePath):
   # 
   # GenPart branch
   #   
-  nGenPartSizeMax = 400
+  nGenPartSizeMax = 1000
   nGenPartString = 'nGenPart'
   nGenPart                = bookIntBranch(TreeFatJet, nGenPartString)
   GenPartPt               = bookFloatArrayBranch(TreeFatJet, 'GenPart_pt', nGenPartString, nGenPartSizeMax)
@@ -134,7 +138,7 @@ def HarvestNanoAOD(inFileList, outFilePath):
   # 
   # GenJetAK8 branch
   #     
-  nGenJetAK8SizeMax = 10
+  nGenJetAK8SizeMax = 20
   nGenJetAK8String = 'nGenJetAK8'
   nGenJetAK8                = bookIntBranch(TreeFatJet, nGenJetAK8String)
   GenJetAK8Pt               = bookFloatArrayBranch(TreeFatJet, 'GenJetAK8_pt', nGenJetAK8String, nGenJetAK8SizeMax)
@@ -157,22 +161,26 @@ def HarvestNanoAOD(inFileList, outFilePath):
   for inFilePath in inFileList:
     print'Adding files: %s'%(inFilePath)
     tree.Add(inFilePath)
+
+  tree.ls()
   #
   # Use TChain and Setup TTreeReader.
   #
   inTree  = InputTree(tree)
-  numEvents = inTree.entries
+  numEvents = inTree.GetEntries()
   #
   # Set max number of events to process
   # Set to -1 if you want to run over all events
   #
   maxevents = -1
-  # maxevents = 5
+  # maxevents = 1000
 
   #
   # Loop over events
   # 
+  print numEvents
   for iev in xrange(0,numEvents):
+    # print iev
     if maxevents > 0 and iev > maxevents:
       break
     if (iev)%1000==0:
