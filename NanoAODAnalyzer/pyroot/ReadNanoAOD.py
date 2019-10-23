@@ -47,8 +47,8 @@ def getInputFiles(inputTextFile):
       if lfn.startswith('#'):
         print('skipping file %s' %(lfn))
         continue
-      # pfn = 'root://xrootd-cms.infn.it/' + lfn
-      pfn = 'root://cms-xrd-global.cern.ch/' + lfn
+      pfn = 'root://xrootd-cms.infn.it/' + lfn
+      # pfn = 'root://cms-xrd-global.cern.ch/' + lfn
       # print 'Adding ' + pfn
       files.append(pfn)
   return files
