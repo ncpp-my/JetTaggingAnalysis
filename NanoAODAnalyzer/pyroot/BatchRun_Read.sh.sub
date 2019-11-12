@@ -1,0 +1,26 @@
+executable    = BatchRun_Read.sh
+universe      = vanilla
+output        = BatchLog/Ntuple.$(SAMPLE).$(ClusterId).$(ProcId).out
+error         = BatchLog/Ntuple.$(SAMPLE).$(ClusterId).$(ProcId).err
+log           = BatchLog/Ntuple.$(ClusterId).log
+stream_output = True
+stream_error  = True
+
++JobFlavour = "microcentury"
+arguments = $(SAMPLE)
+queue SAMPLE from ( 
+#ZprimeToTT
+#GToZZ
+#QCD
+)
+
++JobFlavour = "tomorrow"
+arguments = $(SAMPLE)
+queue SAMPLE from (
+#WprimeWZ_pt
+#ZprimeToTT_eff
+#GToZZ_pt
+#QCD_pt
+#mass_study
+WZ_mass_study
+)
