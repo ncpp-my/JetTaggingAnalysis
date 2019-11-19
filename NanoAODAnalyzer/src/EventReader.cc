@@ -42,7 +42,7 @@ EventReader::EventReader(TChain* t, bool mc, std::string era, bool d){
   readerMuons       = new RecoMuonReader("Muon",        tree, isMC, eraName, doRoccorForMuons);
   readerElectrons   = new RecoElectronReader("Electron",tree, isMC, eraName);
   readerJets        = new RecoJetReader("Jet",          tree, isMC, eraName);
-  readerFatJets     = new RecoFatJetReader("FatJet",    tree, isMC, eraName);
+  readerFatJets     = new RecoFatJetReader("FatJet", "SubJet", tree, isMC, eraName);
   readerMET         = new RecoMETReader("MET",          tree, isMC, eraName);
   readerTrigObjects = new TrigObjectReader("TrigObj",   tree);
   if(isMC){
@@ -245,7 +245,7 @@ bool EventReader::ConstructEventHypothesis()
   trigObjectsMuon      = readerTrigObjects->SelectTrigObjects(0.0, 1e6, TrigObjectID::Muon);
   trigObjectsElectron  = readerTrigObjects->SelectTrigObjects(0.0, 1e6, TrigObjectID::Electron);  
   HelperFunctions::MatchTrigObjectsMuon(recoMuons,trigObjectsMuon,trigMatchDR);
-  HelperFunctions::MatchTrigObjectsElectron(recoElectrons,trigObjectsElectron,trigMatchDR);
+  // HelperFunctions::MatchTrigObjectsElectron(recoElectrons,trigObjectsElectron,trigMatchDR);
   
   if(debug) std::cout<<"Check number of leptons"<<std::endl;
 
