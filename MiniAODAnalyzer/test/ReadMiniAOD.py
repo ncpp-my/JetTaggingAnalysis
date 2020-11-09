@@ -103,6 +103,8 @@ def HarvestMiniAOD(inFilePath, outFilePath):
   #
   ak8jetLabel = "slimmedJetsAK8"
   ak8jets = Handle("std::vector<pat::Jet>")
+  ak4jetLabel = "slimmedJets"
+  ak4jets = Handle("std::vector<pat::Jet>")
 
   # 
   # Read in the MiniAOD file
@@ -119,7 +121,7 @@ def HarvestMiniAOD(inFilePath, outFilePath):
   # Set to -1 if you want to run over all events
   #
   # maxevents = -1
-  maxevents = 5
+  maxevents = 1
   
   #
   # The Event Loop
@@ -138,22 +140,35 @@ def HarvestMiniAOD(inFilePath, outFilePath):
     #
     # Get jets
     #
-    event.getByLabel (ak8jetLabel, ak8jets)  
-    
+    event.getByLabel (ak4jetLabel, ak4jets)  
     #
     # Loop over jets
     #
-    nFatJet[0]=0
-    for i,jet in enumerate(ak8jets.product()):
-      jetP4 = ROOT.TLorentzVector( jet.px(), jet.py(), jet.pz(), jet.energy() )
-
-      FatJetPt[i]  = jetP4.Pt()
-      FatJetEta[i] = jetP4.Eta()
-      FatJetPhi[i] = jetP4.Phi()
-      FatJetM[i]   = jetP4.M()
+    for i,jet in enumerate(ak4jets.product()):
       print "New Jet"
       for ufl in jet.userFloatNames():
         print  "\t%s %s" % (ufl, jet.userFloat(ufl))
+      for uil in jet.userIntNames():
+        print  "\t%s %s" % (uil, jet.userInt(uil))
+
+    # #
+    # # Get jets
+    # #
+    # event.getByLabel (ak8jetLabel, ak8jets)  
+    # #
+    # # Loop over jets
+    # #
+    # nFatJet[0]=0
+    # for i,jet in enumerate(ak8jets.product()):
+    #   jetP4 = ROOT.TLorentzVector( jet.px(), jet.py(), jet.pz(), jet.energy() )
+
+    #   FatJetPt[i]  = jetP4.Pt()
+    #   FatJetEta[i] = jetP4.Eta()
+    #   FatJetPhi[i] = jetP4.Phi()
+    #   FatJetM[i]   = jetP4.M()
+    #   print "New Jet"
+    #   for ufl in jet.userFloatNames():
+    #     print  "\t%s %s" % (ufl, jet.userFloat(ufl))
 
 
       #
@@ -165,12 +180,14 @@ def HarvestMiniAOD(inFilePath, outFilePath):
       # FatJetTau2[i] = jet.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau2");
       # FatJetTau3[i] = jet.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau3");
 
-      nFatJet[0] += 1
+      # nFatJet[0] += 1
+
+
     
     #
     # Fill the tree for this event
     #
-    TreeFatJet.Fill()
+    # TreeFatJet.Fill()
 
   #
   # Save the output ttree in the output file
@@ -223,6 +240,10 @@ def main(argv):
     #
     print 'Processing file ' + inFilePath
     HarvestMiniAOD(inFilePath,outFilePath)
+    #
+    # End loop. Run just one file.
+    #
+    break
 
   print "****************************************"
   print ""
