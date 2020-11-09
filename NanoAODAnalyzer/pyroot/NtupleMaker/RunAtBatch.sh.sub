@@ -1,4 +1,4 @@
-executable    = BatchRun_JetTaggingNTupleMaker.sh
+executable    = RunAtBatch.sh
 universe      = vanilla
 output        = BatchLog/Ntuple.$(SAMPLE).$(ClusterId).$(ProcId).out
 error         = BatchLog/Ntuple.$(SAMPLE).$(ClusterId).$(ProcId).err
