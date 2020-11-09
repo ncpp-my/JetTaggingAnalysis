@@ -1,6 +1,15 @@
 #!/bin/bash
-export X509_USER_PROXY=/afs/cern.ch/user/s/ssyedoma/myProxy
-cd /afs/cern.ch/work/s/ssyedoma/AnaJetTagging/CMSSW_10_2_15/src/
+#
+# CHECK: Specify your path
+#
+export X509_USER_PROXY=/afs/cern.ch/user/n/nbinnorj/myProxy
+#
+# CHECK: Specify your path
+#
+cd /afs/cern.ch/work/n/nbinnorj/AnaJetTagging/CMSSW_10_2_22/src/
+#
+#
+#
 eval `scramv1 runtime -sh`
 
 cd JetTaggingAnalysis/NanoAODAnalyzer/pyroot/
