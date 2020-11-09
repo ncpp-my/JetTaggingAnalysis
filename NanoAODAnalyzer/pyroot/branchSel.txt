@@ -1,0 +1,14 @@
+drop *
+keep nFatJet
+keep FatJet*
+keep nGenPart
+keep GenPart*
+keep nGenJetAK8
+keep GenJetAK8*
+keep nSubJet
+keep SubJet*
+keep nSubGenJetAK8
+keep SubGenJetAK8*
+keep PV*
+keep Pileup*
+

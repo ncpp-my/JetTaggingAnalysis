@@ -2,7 +2,7 @@
 
 SAMPLES=(
 # "WprimeWZM600"
-"WprimeWZM800"
+# "WprimeWZM800"
 # "WprimeWZM1000"
 # "WprimeWZM1200"
 # "WprimeWZM1400"
@@ -21,10 +21,11 @@ SAMPLES=(
 # "WprimeWZM7500"
 # "WprimeWZM8000"
 # "QCDPt15To7000"
+"QCDPt15To7000_part1"
 )
 
 for s in "${SAMPLES[@]}"
 do
   FULLPATH="../../SampleListNanoAOD/${s}.txt"
-  python ReadNanoAOD.py --input ${FULLPATH} --outputDir "root://eosuser.cern.ch//eos/user/s/ssyedoma/AnaJetTagging/Ntuples/"
+  python ReadNanoAOD.py --input ${FULLPATH} --outputDir "root://eosuser.cern.ch//eos/user/n/nbinnorj/AnaJetTagging/Ntuples/"
 done

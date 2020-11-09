@@ -9,6 +9,7 @@ from array       import array
 from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import Collection
 from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import Event
 from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import InputTree
+from PhysicsTools.NanoAODTools.postprocessing.framework.branchselection import BranchSelection
 
 ROOT.gROOT.SetBatch()
 
@@ -87,7 +88,7 @@ def bookFloatArrayBranch(tree, branchName, sizeBranchName, arraySize):
 #
 #
 ##########################################################
-def HarvestNanoAOD(inFileList, outFilePath):
+def HarvestNanoAOD(inFileList, outFilePath, sample):
   # 
   # Create the output file
   # 
@@ -99,13 +100,17 @@ def HarvestNanoAOD(inFileList, outFilePath):
   #
   treeName = "TreeFatJet"
   
+  isMC_QCD=False
+  if "QCD" in sample:
+    isMC_QCD=True
+  
   print "Create Output Tree: %s" %(treeName) 
   TreeFatJet = ROOT.TTree(treeName, treeName)
   
   #
   # FatJet branch
   #
-  nFatJetSizeMax = 20
+  nFatJetSizeMax = 25
   nFatJetString  = 'nFatJet'
   nFatJet                 = bookIntBranch(TreeFatJet, nFatJetString)
   FatJetPt                = bookFloatArrayBranch(TreeFatJet, 'FatJet_pt' ,  nFatJetString, nFatJetSizeMax)
@@ -120,33 +125,64 @@ def HarvestNanoAOD(inFileList, outFilePath):
   FatJetDeepTagZvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_ZvsQCD',  nFatJetString, nFatJetSizeMax)
   FatJetDeepTagQCD        = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCD',  nFatJetString, nFatJetSizeMax)  
   FatJetDeepTagQCDOthers  = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCDothers',  nFatJetString, nFatJetSizeMax)
-  FatJetMSoftDrop         = bookFloatArrayBranch(TreeFatJet, 'FatJet_msoftdrop',  nFatJetString, nFatJetSizeMax)
+  FatJetMSoftDrop         = bookFloatArrayBranch(TreeFatJet, 'FatJet_msoftdrop',   nFatJetString, nFatJetSizeMax)
+  FatJetRawFactor         = bookFloatArrayBranch(TreeFatJet, 'FatJet_rawFactor',   nFatJetString, nFatJetSizeMax)
+  FatJetJetId             = bookIntArrayBranch(TreeFatJet,   'FatJet_jetId', nFatJetString, nFatJetSizeMax)
+  FatJetSubJetIdx1        = bookIntArrayBranch(TreeFatJet, 'FatJet_subJetIdx1',  nFatJetString, nFatJetSizeMax)
+  FatJetSubJetIdx2        = bookIntArrayBranch(TreeFatJet, 'FatJet_subJetIdx2',  nFatJetString, nFatJetSizeMax)
+  FatJetGenJetAK8Idx      = bookIntArrayBranch(TreeFatJet, 'FatJet_genJetAK8Idx',nFatJetString, nFatJetSizeMax)
+
   # 
   # GenPart branch
-  #   
-  nGenPartSizeMax = 1000
-  nGenPartString = 'nGenPart'
-  nGenPart                = bookIntBranch(TreeFatJet, nGenPartString)
-  GenPartPt               = bookFloatArrayBranch(TreeFatJet, 'GenPart_pt', nGenPartString, nGenPartSizeMax)
-  GenPartEta              = bookFloatArrayBranch(TreeFatJet, 'GenPart_eta', nGenPartString, nGenPartSizeMax)
-  GenPartPhi              = bookFloatArrayBranch(TreeFatJet, 'GenPart_phi', nGenPartString, nGenPartSizeMax)
-  GenPartM                = bookFloatArrayBranch(TreeFatJet, 'GenPart_mass', nGenPartString, nGenPartSizeMax)
-  GenPartPdgId            = bookIntArrayBranch(TreeFatJet,'GenPart_pdgId', nGenPartString, nGenPartSizeMax)
-  GenPartStatus           = bookIntArrayBranch(TreeFatJet, 'GenPart_status', nGenPartString, nGenPartSizeMax)
-  GenPartStatusFlags      = bookIntArrayBranch(TreeFatJet, 'GenPart_statusFlags', nGenPartString, nGenPartSizeMax)
-  GenPartGenPartIdxMother = bookIntArrayBranch(TreeFatJet, 'GenPart_genPartIdxMother', nGenPartString, nGenPartSizeMax)
+  #  
+  if isMC_QCD == False:
+    nGenPartSizeMax = 1000
+    nGenPartString = 'nGenPart'
+    nGenPart                = bookIntBranch(TreeFatJet, nGenPartString)
+    GenPartPt               = bookFloatArrayBranch(TreeFatJet, 'GenPart_pt', nGenPartString, nGenPartSizeMax)
+    GenPartEta              = bookFloatArrayBranch(TreeFatJet, 'GenPart_eta', nGenPartString, nGenPartSizeMax)
+    GenPartPhi              = bookFloatArrayBranch(TreeFatJet, 'GenPart_phi', nGenPartString, nGenPartSizeMax)
+    GenPartM                = bookFloatArrayBranch(TreeFatJet, 'GenPart_mass', nGenPartString, nGenPartSizeMax)
+    GenPartPdgId            = bookIntArrayBranch(TreeFatJet,   'GenPart_pdgId', nGenPartString, nGenPartSizeMax)
+    GenPartStatus           = bookIntArrayBranch(TreeFatJet,   'GenPart_status', nGenPartString, nGenPartSizeMax)
+    GenPartStatusFlags      = bookIntArrayBranch(TreeFatJet,   'GenPart_statusFlags', nGenPartString, nGenPartSizeMax)
+    GenPartGenPartIdxMother = bookIntArrayBranch(TreeFatJet,   'GenPart_genPartIdxMother', nGenPartString, nGenPartSizeMax)
   # 
   # GenJetAK8 branch
   #     
-  nGenJetAK8SizeMax = 20
+  nGenJetAK8SizeMax = 25
   nGenJetAK8String = 'nGenJetAK8'
   nGenJetAK8                = bookIntBranch(TreeFatJet, nGenJetAK8String)
   GenJetAK8Pt               = bookFloatArrayBranch(TreeFatJet, 'GenJetAK8_pt', nGenJetAK8String, nGenJetAK8SizeMax)
   GenJetAK8Eta              = bookFloatArrayBranch(TreeFatJet, 'GenJetAK8_eta', nGenJetAK8String, nGenJetAK8SizeMax)
   GenJetAK8Phi              = bookFloatArrayBranch(TreeFatJet, 'GenJetAK8_phi', nGenJetAK8String, nGenJetAK8SizeMax)
   GenJetAK8M                = bookFloatArrayBranch(TreeFatJet, 'GenJetAK8_mass', nGenJetAK8String, nGenJetAK8SizeMax)
-  GenJetAK8HadronFlavour    = bookIntArrayBranch(TreeFatJet, 'GenJetAK8_hadronFlavour', nGenJetAK8String, nGenJetAK8SizeMax)
-  GenJetAK8PartonFlavour    = bookIntArrayBranch(TreeFatJet, 'GenJetAK8_partonFlavour', nGenJetAK8String, nGenJetAK8SizeMax)
+  GenJetAK8HadronFlavour    = bookIntArrayBranch(TreeFatJet,   'GenJetAK8_hadronFlavour', nGenJetAK8String, nGenJetAK8SizeMax)
+  GenJetAK8PartonFlavour    = bookIntArrayBranch(TreeFatJet,   'GenJetAK8_partonFlavour', nGenJetAK8String, nGenJetAK8SizeMax)
+  # 
+  # Subjet branch
+  #     
+  nSubJetSizeMax = 50
+  nSubJetString = 'nSubJet'
+  nSubJet         = bookIntBranch(TreeFatJet, nSubJetString)
+  SubJetPt        = bookFloatArrayBranch(TreeFatJet, 'SubJet_pt',        nSubJetString, nSubJetSizeMax)
+  SubJetEta       = bookFloatArrayBranch(TreeFatJet, 'SubJet_eta',       nSubJetString, nSubJetSizeMax)
+  SubJetPhi       = bookFloatArrayBranch(TreeFatJet, 'SubJet_phi',       nSubJetString, nSubJetSizeMax)
+  SubJetM         = bookFloatArrayBranch(TreeFatJet, 'SubJet_mass',      nSubJetString, nSubJetSizeMax)
+  SubJetRawFactor = bookFloatArrayBranch(TreeFatJet, 'SubJet_rawFactor', nSubJetString, nSubJetSizeMax)
+  SubJetNBHadrons = bookIntArrayBranch(TreeFatJet,   'SubJet_nBHadrons', nSubJetString, nSubJetSizeMax)
+  SubJetNCHadrons = bookIntArrayBranch(TreeFatJet,   'SubJet_nCHadrons', nSubJetString, nSubJetSizeMax)
+  # 
+  # SubGenJetAK8 branch
+  #     
+  nSubGenJetAK8SizeMax = 50
+  nSubGenJetAK8String = 'nSubGenJetAK8'
+  nSubGenJetAK8        = bookIntBranch(TreeFatJet, nSubGenJetAK8String)
+  SubGenJetAK8Pt       = bookFloatArrayBranch(TreeFatJet, 'SubGenJetAK8_pt',   nSubGenJetAK8String, nSubGenJetAK8SizeMax)
+  SubGenJetAK8Eta      = bookFloatArrayBranch(TreeFatJet, 'SubGenJetAK8_eta',  nSubGenJetAK8String, nSubGenJetAK8SizeMax)
+  SubGenJetAK8Phi      = bookFloatArrayBranch(TreeFatJet, 'SubGenJetAK8_phi',  nSubGenJetAK8String, nSubGenJetAK8SizeMax)
+  SubGenJetAK8M        = bookFloatArrayBranch(TreeFatJet, 'SubGenJetAK8_mass', nSubGenJetAK8String, nSubGenJetAK8SizeMax)
+
   # 
   # PV branch
   # 
@@ -161,12 +197,22 @@ def HarvestNanoAOD(inFileList, outFilePath):
   for inFilePath in inFileList:
     print'Adding files: %s'%(inFilePath)
     tree.Add(inFilePath)
+  # tree.Add("/afs/cern.ch/work/n/nbinnorj/Samples/Nano/store/mc/RunIIAutumn18NanoAODv7/Wprime_ggF_WZ_WhadZlep_narrow_M2000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/6F3FD75A-C578-D846-9D0C-26AC28C55C83.root")
 
   tree.ls()
   #
   # Use TChain and Setup TTreeReader.
   #
   inTree  = InputTree(tree)
+  #
+  #
+  #
+  if isMC_QCD:
+    branchSel = BranchSelection("branchSel_QCD.txt")
+  else:
+    branchSel = BranchSelection("branchSel.txt")
+  branchSel.selectBranches(inTree)
+
   numEvents = inTree.GetEntries()
   #
   # Set max number of events to process
@@ -218,22 +264,28 @@ def HarvestNanoAOD(inFileList, outFilePath):
       FatJetDeepTagQCD[i]       = fj.deepTag_QCD
       FatJetDeepTagQCDOthers[i] = fj.deepTag_QCDothers
       FatJetMSoftDrop[i]        = fj.msoftdrop   
-      nFatJet[0]   += 1
+      FatJetRawFactor[i]        = fj.rawFactor
+      FatJetJetId[i]            = fj.jetId
+      FatJetSubJetIdx1[i]       = fj.subJetIdx1
+      FatJetSubJetIdx2[i]       = fj.subJetIdx2
+      FatJetGenJetAK8Idx[i]     = fj.genJetAK8Idx
+      nFatJet[0]+= 1
     #
     # Loop over genparts
     #
-    particles = Collection(evt, "GenPart")
-    nGenPart[0]=0
-    for i, gp in enumerate(particles):
-      GenPartPt[i]                = gp.pt
-      GenPartEta[i]               = gp.eta
-      GenPartPhi[i]               = gp.phi
-      GenPartM[i]                 = gp.mass
-      GenPartPdgId[i]             = gp.pdgId
-      GenPartStatus[i]            = gp.status
-      GenPartStatusFlags[i]       = gp.statusFlags
-      GenPartGenPartIdxMother[i]  = gp.genPartIdxMother
-      nGenPart[0] +=1
+    if isMC_QCD == False:
+      particles = Collection(evt, "GenPart")
+      nGenPart[0]=0
+      for i, gp in enumerate(particles):
+        GenPartPt[i]                = gp.pt
+        GenPartEta[i]               = gp.eta
+        GenPartPhi[i]               = gp.phi
+        GenPartM[i]                 = gp.mass
+        GenPartPdgId[i]             = gp.pdgId
+        GenPartStatus[i]            = gp.status
+        GenPartStatusFlags[i]       = gp.statusFlags
+        GenPartGenPartIdxMother[i]  = gp.genPartIdxMother
+        nGenPart[0]+=1
     # 
     # Loop over GenJetAK8
     #   
@@ -246,7 +298,33 @@ def HarvestNanoAOD(inFileList, outFilePath):
       GenJetAK8M[i]             = gj.mass         
       GenJetAK8HadronFlavour[i] = gj.hadronFlavour
       GenJetAK8PartonFlavour[i] = gj.partonFlavour
-      nGenJetAK8[0] +=1
+      nGenJetAK8[0]+=1
+    # 
+    # Subjet over GenJetAK8
+    #   
+    subjets = Collection(evt, "SubJet")
+    nSubJet[0]=0
+    for i, sj in enumerate(subjets):
+      SubJetPt[i]            = sj.pt      
+      SubJetEta[i]           = sj.eta        
+      SubJetPhi[i]           = sj.phi       
+      SubJetM[i]             = sj.mass      
+      SubJetRawFactor[i]     = sj.rawFactor
+      SubJetNBHadrons[i]     = sj.nBHadrons
+      SubJetNCHadrons[i]     = sj.nCHadrons
+      nSubJet[0]+=1
+
+    # 
+    # Subjet over GenJetAK8
+    #   
+    subjets = Collection(evt, "SubGenJetAK8")
+    nSubGenJetAK8[0]=0
+    for i, sj in enumerate(subjets):
+      SubGenJetAK8Pt[i]  = sj.pt      
+      SubGenJetAK8Eta[i] = sj.eta        
+      SubGenJetAK8Phi[i] = sj.phi       
+      SubGenJetAK8M[i]   = sj.mass      
+      nSubGenJetAK8[0]+=1
     #   
     # Loop over PV
     #   
@@ -308,7 +386,7 @@ def main(argv):
   # Process each file
   #
   print 'Processing files'
-  HarvestNanoAOD(inFileList,outFilePath)
+  HarvestNanoAOD(inFileList,outFilePath,sample)
 
   print "****************************************"
   print ""
