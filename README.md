@@ -12,9 +12,8 @@ cd AnaJetTagging
 Setup a CMSSW release.
 
 ```bash
-export SCRAM_ARCH=slc7_amd64_gcc700
-cmsrel CMSSW_10_2_15
-cd CMSSW_10_2_15/src
+cmsrel CMSSW_10_2_22
+cd CMSSW_10_2_22/src
 cmsenv
 ```
 
@@ -24,13 +23,7 @@ cmsenv
 git clone git@github.com:ncpp-my/JetTaggingAnalysis.git JetTaggingAnalysis
 ```
 
-### 2. Checkout framework which the parent NanoAODAnalysis framework
-
-```bash
-git clone git@github.com:nurfikri89/NanoAODAnalysis.git 
-```
-
-### 3. Checkout NanoAOD-Tools
+### 2. Checkout NanoAOD-Tools
 
 Get NanoAODTools framework
 
@@ -39,9 +32,9 @@ git clone git@github.com:cms-nanoAOD/nanoAOD-tools.git PhysicsTools/NanoAODTools
 
 ```
 
-Instruction from to https://github.com/cms-nanoAOD/nanoAOD-tools#checkout-instructions-cmssw
+Instruction from https://github.com/cms-nanoAOD/nanoAOD-tools#checkout-instructions-cmssw
 
-### 4. Compile
+### 3. Compile
 
 ```bash
 scram b -j 4
