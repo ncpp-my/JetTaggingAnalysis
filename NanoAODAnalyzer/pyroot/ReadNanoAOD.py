@@ -202,13 +202,13 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
   for inFilePath in inFileList:
     print'Adding files: %s'%(inFilePath)
     tree.Add(inFilePath)
-  # tree.Add("/afs/cern.ch/work/n/nbinnorj/Samples/Nano/store/mc/RunIIAutumn18NanoAODv7/Wprime_ggF_WZ_WhadZlep_narrow_M2000_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/6F3FD75A-C578-D846-9D0C-26AC28C55C83.root")
 
   tree.ls()
   #
   # Use TChain and Setup TTreeReader.
   #
   inTree  = InputTree(tree)
+  
   #
   #
   #
