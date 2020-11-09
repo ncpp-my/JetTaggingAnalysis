@@ -15,11 +15,11 @@ cd /afs/cern.ch/work/n/nbinnorj/AnaJetTagging/CMSSW_10_2_22/src/
 #
 eval `scramv1 runtime -sh`
 
-cd JetTaggingAnalysis/NanoAODAnalyzer/pyroot/
+cd JetTaggingAnalysis/NanoAODAnalyzer/pyroot/NtupleMaker/
 echo "Running ReadNanoAOD.py"
 
-INPUTPATH="../../SampleListNanoAOD/${1}.txt"
+INPUTPATH="../../../SampleListNanoAOD/${1}.txt"
 
-python ./ReadNanoAOD.py --input ${INPUTPATH}
+python ./MakeNtupleFromNanoAOD.py --input ${INPUTPATH}
 
 echo "ProcessNanoAOD_AnaJetTagging::DONE"
