@@ -13,6 +13,12 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.branchselection import B
 
 ROOT.gROOT.SetBatch()
 
+#
+# CHECK: Specify your path
+#
+XROOTDIR="root://eosuser.cern.ch/"
+OUTPUTDIR="/eos/user/n/nbinnorj/AnaJetTagging/Ntuples/"
+
 def getUserOptions(argv):
   from optparse import OptionParser
   parser = OptionParser()
@@ -22,7 +28,6 @@ def getUserOptions(argv):
 
   add_option('input',        default='',        help='Name of file with list of input files')
   add_option('outputPrefix', default='Ntuple',  help='Prefix of root output file')
-  add_option('outputDir',    default='./',      help='Path of output dir')
   add_option('maxevents',    default=-1,        help='Number of events to run. -1 is all events')
 
   (options, args) = parser.parse_args(argv)
@@ -381,7 +386,7 @@ def main(argv):
   #
   # Create output tree filename
   #
-  outFilePath = "%s%s_%s.root" %(options.outputDir,options.outputPrefix,sample)
+  outFilePath = "%s%s/Ntuple_%s.root" %(XROOTDIR,OUTPUTDIR,sample)
   #
   # Process each file
   #
