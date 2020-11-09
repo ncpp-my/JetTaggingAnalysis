@@ -19,7 +19,7 @@ def main(txtFileName, nGroupFiles=10):
 
       i=0
       for fileChunk in filesChunks:
-        txtFileSplitName = "./"+sampleName+"_"+str(i)+".txt"
+        txtFileSplitName = "./"+sampleName+"_part"+str(i)+".txt"
         fOut = open(txtFileSplitName, "w")
         for line in fileChunk:
           # write line to output file
@@ -30,7 +30,7 @@ def main(txtFileName, nGroupFiles=10):
 if __name__ == "__main__":
   
   txtFiles=[
-    ("QCDPt15To7000",10)
+    ("QCDPt15To7000",1)
     ]
 
   for txtFile in txtFiles:
