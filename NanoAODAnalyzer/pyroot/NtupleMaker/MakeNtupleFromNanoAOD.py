@@ -17,7 +17,7 @@ ROOT.gROOT.SetBatch()
 # CHECK: Specify your path
 #
 XROOTDIR="root://eosuser.cern.ch/"
-OUTPUTDIR="/eos/user/n/nbinnorj/AnaJetTagging/Ntuples/"
+OUTPUTDIR="/eos/user/s/ssyedoma/AnaJetTagging/Ntuples/"
 
 def getUserOptions(argv):
   from optparse import OptionParser
@@ -130,6 +130,9 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
   FatJetDeepTagZvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_ZvsQCD',  nFatJetString, nFatJetSizeMax)
   FatJetDeepTagQCD        = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCD',  nFatJetString, nFatJetSizeMax)  
   FatJetDeepTagQCDOthers  = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCDothers',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagTvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_TvsQCD',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagWvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_WvsQCD',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagZvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_ZvsQCD',  nFatJetString, nFatJetSizeMax)
   FatJetMSoftDrop         = bookFloatArrayBranch(TreeFatJet, 'FatJet_msoftdrop',   nFatJetString, nFatJetSizeMax)
   FatJetRawFactor         = bookFloatArrayBranch(TreeFatJet, 'FatJet_rawFactor',   nFatJetString, nFatJetSizeMax)
   FatJetJetId             = bookIntArrayBranch(TreeFatJet,   'FatJet_jetId', nFatJetString, nFatJetSizeMax)

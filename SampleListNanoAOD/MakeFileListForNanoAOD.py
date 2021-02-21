@@ -32,6 +32,9 @@ samples["WprimeWZM7000"] = "/WprimeToWZToWhadZhad_narrow_M-7000_TuneCP5_13TeV-ma
 samples["WprimeWZM7500"] = "/WprimeToWZToWhadZhad_narrow_M-7500_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
 samples["WprimeWZM8000"] = "/WprimeToWZToWhadZhad_narrow_M-8000_TuneCP5_13TeV-madgraph/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
 
+#
+# Signals
+#
 samples["ZprimeToTTM500"]       = "/ZprimeToTT_M500_W5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
 samples["ZprimeToTTM500_ext1"]  = "/ZprimeToTT_M500_W5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8_ext1-v1/NANOAODSIM"
 samples["ZprimeToTTM750"]       = "/ZprimeToTT_M750_W7p5_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
@@ -60,6 +63,11 @@ samples["ZprimeToTTM7000"]      = "/ZprimeToTT_M7000_W70_TuneCP2_13TeV-madgraphM
 samples["ZprimeToTTM7000_ext1"] = "/ZprimeToTT_M7000_W70_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8_ext1-v1/NANOAODSIM"
 samples["ZprimeToTTM8000"]      = "/ZprimeToTT_M8000_W80_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
 samples["ZprimeToTTM8000_ext1"] = "/ZprimeToTT_M8000_W80_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8_ext1-v1/NANOAODSIM"
+
+# /ZprimeToTT_M8000_W2400_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM
+# /ZprimeToTT_M8000_W2400_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8_ext1-v1/NANOAODSIM
+# /ZprimeToTT_M8000_W800_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM
+# /ZprimeToTT_M8000_W800_TuneCP2_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8_ext1-v1/NANOAODSIM
 
 samples["QCDPt15To7000"] = "/QCD_Pt-15to7000_TuneCP5_Flat2017_13TeV_pythia8/RunIIFall17NanoAODv7-PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/NANOAODSIM"
 

@@ -1,6 +1,11 @@
 import os 
 import glob
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-d' , '--delComplete', action='store_true')
+args = parser.parse_args()
+delComplete = args.delComplete
 
 allOutFile =  glob.glob('./Ntuple.*.out')
 allOutFile.sort() # sort by name
@@ -41,3 +46,10 @@ for jobs in jobsNotDone:
   print jobs 
   os.system('tail -n 1 ' + jobs)
   print "\n"
+
+if delComplete:
+	if len(jobsDone)==0: print "no completed job to be deleted"
+	else:
+		for job in jobsDone:
+			print "deleting " + job +" . . ."
+			os.system("rm {job}.err {job}.out".format(job=job.replace(".out","")))
