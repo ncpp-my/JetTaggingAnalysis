@@ -105,10 +105,8 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
   #
   treeName = "TreeFatJet"
   
-  isMC_QCD=False
-  if "QCD" in sample:
-    isMC_QCD=True
-  
+  isMC_QCD = "QCD" in sample
+
   print "Create Output Tree: %s" %(treeName) 
   TreeFatJet = ROOT.TTree(treeName, treeName)
   
@@ -130,9 +128,9 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
   FatJetDeepTagZvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_ZvsQCD',  nFatJetString, nFatJetSizeMax)
   FatJetDeepTagQCD        = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCD',  nFatJetString, nFatJetSizeMax)  
   FatJetDeepTagQCDOthers  = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTag_QCDothers',  nFatJetString, nFatJetSizeMax)
-  FatJetDeepTagTvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_TvsQCD',  nFatJetString, nFatJetSizeMax)
-  FatJetDeepTagWvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_WvsQCD',  nFatJetString, nFatJetSizeMax)
-  FatJetDeepTagZvsQCD     = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_ZvsQCD',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagMDTvsQCD   = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_TvsQCD',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagMDWvsQCD   = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_WvsQCD',  nFatJetString, nFatJetSizeMax)
+  FatJetDeepTagMDZvsQCD   = bookFloatArrayBranch(TreeFatJet, 'FatJet_deepTagMD_ZvsQCD',  nFatJetString, nFatJetSizeMax)
   FatJetMSoftDrop         = bookFloatArrayBranch(TreeFatJet, 'FatJet_msoftdrop',   nFatJetString, nFatJetSizeMax)
   FatJetRawFactor         = bookFloatArrayBranch(TreeFatJet, 'FatJet_rawFactor',   nFatJetString, nFatJetSizeMax)
   FatJetJetId             = bookIntArrayBranch(TreeFatJet,   'FatJet_jetId', nFatJetString, nFatJetSizeMax)
@@ -215,10 +213,8 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
   #
   #
   #
-  if isMC_QCD:
-    branchSel = BranchSelection("branchSel_QCD.txt")
-  else:
-    branchSel = BranchSelection("branchSel.txt")
+  if isMC_QCD: branchSel = BranchSelection("branchSel_QCD.txt")
+  else       : branchSel = BranchSelection("branchSel.txt")
   branchSel.selectBranches(inTree)
 
   numEvents = inTree.GetEntries()
@@ -266,6 +262,10 @@ def HarvestNanoAOD(inFileList, outFilePath, sample):
         FatJetTau32[i]          = fj.tau3/fj.tau2       
       else:
         FatJetTau32[i]          = -1 
+
+      FatJetDeepTagMDTvsQCD[i]  = fj.deepTagMD_TvsQCD
+      FatJetDeepTagMDWvsQCD[i]  = fj.deepTagMD_WvsQCD
+      FatJetDeepTagMDZvsQCD[i]  = fj.deepTagMD_ZvsQCD
       FatJetDeepTagTvsQCD[i]    = fj.deepTag_TvsQCD
       FatJetDeepTagWvsQCD[i]    = fj.deepTag_WvsQCD
       FatJetDeepTagZvsQCD[i]    = fj.deepTag_ZvsQCD

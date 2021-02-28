@@ -3,12 +3,12 @@
 #
 # CHECK: Specify your path
 #
-export X509_USER_PROXY=/afs/cern.ch/user/n/nbinnorj/myProxy
+export X509_USER_PROXY=/afs/cern.ch/user/s/ssyedoma/myProxy
 
 #
 # CHECK: Specify your path
 #
-cd /afs/cern.ch/work/n/nbinnorj/AnaJetTagging/CMSSW_10_2_22/src/
+cd /afs/cern.ch/work/s/ssyedoma/AnaJetTagging/CMSSW_10_2_22/src/
 
 #
 #
