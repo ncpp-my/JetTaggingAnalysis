@@ -1,0 +1,166 @@
+executable    = RunAtBatch.sh
+universe      = vanilla
+output        = BatchLog/Ntuple.$(VER).$(SAMPLE).$(ClusterId).$(ProcId).out
+error         = BatchLog/Ntuple.$(VER).$(SAMPLE).$(ClusterId).$(ProcId).err
+log           = BatchLog/Ntuple.$(ClusterId).log
+stream_output = True
+stream_error  = True
+
+
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#v7  WprimeWZM600  
+#v7  WprimeWZM800  
+#v7  WprimeWZM1000 
+#v7  WprimeWZM1200 
+#v7  WprimeWZM1400 
+#v7  WprimeWZM1600 
+#v7  WprimeWZM2000 
+#v7  WprimeWZM2500 
+#v7  WprimeWZM3000 
+#v7  WprimeWZM3500 
+#v7  WprimeWZM4000
+#v7  WprimeWZM4500 
+#v7  WprimeWZM5000 
+#v7  WprimeWZM5500
+#v7  WprimeWZM6000 
+#v7  WprimeWZM6500 
+#v7  WprimeWZM7000 
+#v7  WprimeWZM7500 
+#v7  WprimeWZM8000 
+#)
+
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#v7 GToZZM800
+#v7 GToZZM1000
+#v7 GToZZM1200
+#v7 GToZZM1400
+#v7 GToZZM1600
+#v7 GToZZM1800
+#v7 GToZZM2000
+#v7 GToZZM3000
+#v7 GToZZM4000
+#)
+
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#ZprimeToTTM500
+#ZprimeToTTM500_ext1
+#v7 ZprimeToTTM750
+#v7 ZprimeToTTM750_ext1
+#v7 ZprimeToTTM1000 
+#v7 ZprimeToTTM1000_ext1 
+#v7 ZprimeToTTM1250 
+#v7 ZprimeToTTM1250_ext1 
+#v7 ZprimeToTTM1500 
+#v7 ZprimeToTTM1500_ext1 
+#v7 ZprimeToTTM2000 
+#v7 ZprimeToTTM2000_ext1 
+#v7 ZprimeToTTM2500 
+#v7 ZprimeToTTM2500_ext1 
+#v7 ZprimeToTTM3000 
+#v7 ZprimeToTTM3000_ext1 
+#v7 ZprimeToTTM3500 
+#v7 ZprimeToTTM3500_ext1 
+#v7 ZprimeToTTM4000 
+#v7 ZprimeToTTM4000_ext1 
+#v7 ZprimeToTTM5000 
+#v7 ZprimeToTTM5000_ext1 
+#v7 ZprimeToTTM6000 
+#v7 ZprimeToTTM6000_ext1 
+#v7 ZprimeToTTM7000 
+#v7 ZprimeToTTM7000_ext1 
+#v7 ZprimeToTTM8000 
+#v7 ZprimeToTTM8000_ext1 
+#) 
+
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#v7  QCDPt15To7000_part0
+#v7  QCDPt15To7000_part1
+#v7  QCDPt15To7000_part2
+#v7  QCDPt15To7000_part3
+#v7  QCDPt15To7000_part4
+#v7  QCDPt15To7000_part5
+#v7  QCDPt15To7000_part6
+#v7  QCDPt15To7000_part7
+#v7  QCDPt15To7000_part8
+#v7  QCDPt15To7000_part9
+#v7  QCDPt15To7000_part10
+#v7  QCDPt15To7000_part11
+#v7  QCDPt15To7000_part12
+#v7  QCDPt15To7000_part13
+#v7  QCDPt15To7000_part14
+#v7  QCDPt15To7000_part15
+#v7  QCDPt15To7000_part16
+#v7  QCDPt15To7000_part17
+#v7  QCDPt15To7000_part18
+#v7  QCDPt15To7000_part19
+#v7  QCDPt15To7000_part20
+#v7  QCDPt15To7000_part21
+#v7  QCDPt15To7000_part22
+#v7  QCDPt15To7000_part23
+#v7  QCDPt15To7000_part24
+#v7  QCDPt15To7000_part25
+#v7  QCDPt15To7000_part26
+#v7  QCDPt15To7000_part27
+#v7  QCDPt15To7000_part28
+#v7  QCDPt15To7000_part29
+#v7  QCDPt15To7000_part30
+#v7  QCDPt15To7000_part31
+#v7  QCDPt15To7000_part32
+#v7  QCDPt15To7000_part33
+#v7  QCDPt15To7000_part34
+#v7  QCDPt15To7000_part35
+#v7  QCDPt15To7000_part36
+#v7  QCDPt15To7000_part37
+#v7  QCDPt15To7000_part38
+#v7  QCDPt15To7000_part39
+#v7  QCDPt15To7000_part40
+#v7  QCDPt15To7000_part41
+#v7  QCDPt15To7000_part42
+#v7  QCDPt15To7000_part43
+#v7  QCDPt15To7000_part44
+#v7  QCDPt15To7000_part45
+#v7  QCDPt15To7000_part46
+#v7  QCDPt15To7000_part47
+#v7  QCDPt15To7000_part48
+#v7  QCDPt15To7000_part49
+#v7  QCDPt15To7000_part50
+#v7  QCDPt15To7000_part51
+#v7  QCDPt15To7000_part52
+#v7  QCDPt15To7000_part53
+#v7  QCDPt15To7000_part54
+#v7  QCDPt15To7000_part55
+#v7  QCDPt15To7000_part56
+#v7  QCDPt15To7000_part57
+#v7  QCDPt15To7000_part58
+#v7  QCDPt15To7000_part59
+#v7  QCDPt15To7000_part60
+#v7  QCDPt15To7000_part61
+#v7  QCDPt15To7000_part62
+#v7  QCDPt15To7000_part63
+#v7  QCDPt15To7000_part64
+#v7  QCDPt15To7000_part65
+#v7  QCDPt15To7000_part66
+#v7  QCDPt15To7000_part67
+#v7  QCDPt15To7000_part68
+#v7  QCDPt15To7000_part69
+#v7  QCDPt15To7000_part70
+#v7  QCDPt15To7000_part71
+#v7  QCDPt15To7000_part72
+#v7  QCDPt15To7000_part73
+#v7  QCDPt15To7000_part74
+#v7  QCDPt15To7000_part75
+#v7  QCDPt15To7000_part76
+#v7  QCDPt15To7000_part77
+#v7  QCDPt15To7000_part78
+#v7  QCDPt15To7000_part79
+#v7  QCDPt15To7000_part80
+#)
+

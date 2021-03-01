@@ -8,7 +8,7 @@ ROOT.gROOT.SetBatch()
 
 usage = "usage: %prog [options]"
 parser = optparse.OptionParser(usage)
-parser.add_option("--sample",  action="store",        default="QCDPt15To7000_part52",  dest="sample", type="str")
+parser.add_option("--sample",  action="store",        default="QCDPt15To7000_part17",  dest="sample", type="str")
 parser.add_option("--batch",   action="store_true",   default=False,            dest="batch")
 (options, args) = parser.parse_args()
 
@@ -17,9 +17,13 @@ sample = options.sample
 doQCD = 'QCD' in sample
 treeName = "TreeFatJet"
 
+#
+# CHECK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+version = "ULv2"
 EOSUSER = "root://eosuser.cern.ch/"
-outDir  = "/eos/user/s/ssyedoma/AnaJetTagging/Histos/"
-inDir   = "/eos/user/s/ssyedoma/AnaJetTagging/Ntuples/"
+inDir   = "/eos/user/s/ssyedoma/AnaJetTagging/Ntuples/%s/"%version
+outDir  = "/eos/user/s/ssyedoma/AnaJetTagging/Histos/%s/"%version
 
 #
 # setup histograms

@@ -17,7 +17,7 @@ ROOT.gROOT.SetBatch()
 # CHECK: Specify your path
 #
 XROOTDIR="root://eosuser.cern.ch/"
-OUTPUTDIR="/eos/user/s/ssyedoma/AnaJetTagging/Ntuples/"
+OUTPUTDIR="/eos/user/s/ssyedoma/AnaJetTagging/Ntuples_ULv2/"
 
 def getUserOptions(argv):
   from optparse import OptionParser

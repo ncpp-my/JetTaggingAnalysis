@@ -9,25 +9,21 @@ multiTagger = 0
 color = [ROOT.kRed+1, ROOT.kGreen+1, ROOT.kOrange+1, ROOT.kBlue+1, 38]
 # lines = [1, 3, 5, 7, 9, 11]
 lines = [1, 1, 1, 1, 1, 1]
+version = 'ULv2'
 EOSUSER = 'root://eosuser.cern.ch/'
-inDir  = '/eos/user/s/ssyedoma/AnaJetTagging/MergedHistos/'
-outDir = "/eos/user/s/ssyedoma/AnaJetTagging/Analysis/ROC/"
+inDir  = '/eos/user/s/ssyedoma/AnaJetTagging/MergedHistos/%s/'%version
+outDir = "/eos/user/s/ssyedoma/AnaJetTagging/Analysis/ROC/%s/"%version
 if not os.path.exists(outDir): os.makedirs(outDir)
 
-outName = [("W_ROC_DeepAK8","W_ROC_tau21"), ("T_ROC_DeepAK8","T_ROC_tau32"), ("Z_ROC_DeepAK8","Z_ROC_tau21")]
-signal = "WprimeWZ"
+signal = "BulkGravWW"
 
 def main():
   
   inFileSig = ROOT.TFile.Open(inDir+'MergedHisto_%s_tag_pt.root' %signal)
   inFileBkg = ROOT.TFile.Open(inDir+'MergedHisto_QCDPt15To7000_tag_pt.root')
-  # inFileSig = ROOT.TFile.Open(inDir+'MergedHisto_%s_tag_pt_2.root' %signal)
-  # inFileBkg = ROOT.TFile.Open(inDir+'MergedHisto_QCDPt15To7000_tag_pt_2.root')
-
-  part = ["W", "T", "Z"]
 
   tagList = {
-    'WprimeWZ': {
+    'BulkGravWW': {
       'deepak8md': 'ROC Curve for W-tagging (DeepAK8-MD)',
       'deepak8'  : 'ROC Curve for W-tagging (DeepAK8)',
       'sdtau21'  : 'ROC Curve for W-tagging (#tau_{21})',
@@ -138,7 +134,6 @@ def main():
       leg.Draw()
       c.SetTicks(1,1)
       c.Print("%sROC_%s_%s.png" %(outDir, signal, tag))
-      # del gr
 
   elif multiTagger:
 

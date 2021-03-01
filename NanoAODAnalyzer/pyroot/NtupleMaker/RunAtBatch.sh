@@ -18,7 +18,7 @@ eval `scramv1 runtime -sh`
 cd JetTaggingAnalysis/NanoAODAnalyzer/pyroot/NtupleMaker/
 echo "Running ReadNanoAOD.py"
 
-INPUTPATH="../../../SampleListNanoAOD/${1}.txt"
+INPUTPATH="../../../SampleListNanoAOD/${1}/${2}.txt"
 
 python ./MakeNtupleFromNanoAOD.py --input ${INPUTPATH}
 

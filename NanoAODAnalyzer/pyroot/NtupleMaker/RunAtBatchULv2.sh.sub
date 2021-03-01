@@ -1,0 +1,59 @@
+executable    = RunAtBatch.sh
+universe      = vanilla
+output        = BatchLog/Ntuple.$(VER).$(SAMPLE).$(ClusterId).$(ProcId).out
+error         = BatchLog/Ntuple.$(VER).$(SAMPLE).$(ClusterId).$(ProcId).err
+log           = BatchLog/Ntuple.$(ClusterId).log
+stream_output = True
+stream_error  = True
+
++JobFlavour   = "longlunch"
+arguments = $(VER) $(SAMPLE)
+queue VER SAMPLE from ( 
+ULv2	BulkGravWWM800
+ULv2	BulkGravWWM1200
+)
+
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#ULv2	BulkGravWWM600
+#ULv2	BulkGravWWM700
+#ULv2	BulkGravWWM800
+#ULv2	BulkGravWWM900
+#ULv2	BulkGravWWM1000
+#ULv2	BulkGravWWM1200
+#ULv2	BulkGravWWM1400
+#ULv2	BulkGravWWM1600
+#ULv2	BulkGravWWM1800
+#ULv2	BulkGravWWM2000
+#ULv2	BulkGravWWM2500
+#ULv2	BulkGravWWM3000
+#ULv2	BulkGravWWM3500
+#ULv2	BulkGravWWM4000
+#ULv2 BulkGravWWM4500
+#)
+#
+#+JobFlavour   = "microcentury"
+#arguments = $(VER) $(SAMPLE)
+#queue VER SAMPLE from ( 
+#ULv2 QCDPt15To7000_part0
+#ULv2 QCDPt15To7000_part1
+#ULv2 QCDPt15To7000_part2
+#ULv2 QCDPt15To7000_part3
+#ULv2 QCDPt15To7000_part4
+#ULv2 QCDPt15To7000_part5
+#ULv2 QCDPt15To7000_part6
+#ULv2 QCDPt15To7000_part7
+#ULv2 QCDPt15To7000_part8
+#ULv2 QCDPt15To7000_part9
+#ULv2 QCDPt15To7000_part10
+#ULv2 QCDPt15To7000_part11
+#ULv2 QCDPt15To7000_part12
+#ULv2 QCDPt15To7000_part13
+#ULv2 QCDPt15To7000_part14
+#ULv2 QCDPt15To7000_part15
+#ULv2 QCDPt15To7000_part16
+#ULv2 QCDPt15To7000_part17
+#)
+#
+#

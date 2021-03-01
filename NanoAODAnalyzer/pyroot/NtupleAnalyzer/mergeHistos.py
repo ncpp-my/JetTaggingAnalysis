@@ -1,10 +1,12 @@
 import glob, ROOT, os
 
-inDir = '/eos/user/s/ssyedoma/AnaJetTagging/Histos/'
-outDir = '/eos/user/s/ssyedoma/AnaJetTagging/MergedHistos/'
+version = 'ULv2'
+inDir = '/eos/user/s/ssyedoma/AnaJetTagging/Histos/%s/'%version
+outDir = '/eos/user/s/ssyedoma/AnaJetTagging/MergedHistos/%s/'%version
+if not os.path.exists(outDir): os.makedirs(outDir)
 
-sample = 'QCDPt15To7000'
-# sample = 'WprimeWZ'
+# sample = 'QCDPt15To7000'
+sample = 'BulkGravWW'
 
 fileList = glob.glob(inDir+'Histo_%s*_tag_pt.root'%sample)
 # fileList = glob.glob(inDir+'Histo_%s*_tag_pt_2.root'%sample)
