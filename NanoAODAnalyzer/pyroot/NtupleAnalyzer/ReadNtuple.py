@@ -24,6 +24,7 @@ version = "ULv2"
 EOSUSER = "root://eosuser.cern.ch/"
 inDir   = "/eos/user/s/ssyedoma/AnaJetTagging/Ntuples/%s/"%version
 outDir  = "/eos/user/s/ssyedoma/AnaJetTagging/Histos/%s/"%version
+if not os.path.exists(outDir): os.makedirs(outDir)
 
 #
 # setup histograms
@@ -115,7 +116,9 @@ for i in xrange(0, nEvents):
     Winfj = []
     qinfj  = []
     for fj in fatjet:
-      if fj.pt>200. and abs(fj.eta)<2.4:
+      basecut = fj.pt>200. and abs(fj.eta)<2.4
+      masscut = fj.msoftdrop>65. and fj.msoftdrop<105.
+      if basecut and masscut :
         Winfj = [(x,x.pt) for x in nW if (len(nW)>0 and x.DeltaR(fj)<0.8)]
         Winfj.sort(key=lambda x: x[1])
     
@@ -134,9 +137,8 @@ for i in xrange(0, nEvents):
           if q0.DeltaR(fj)<0.8 and q1.DeltaR(fj)<0.8 and particles[q0.genPartIdxMother].DeltaR(fj)<0.8:
             histos['deepak8'].Fill(fj.pt, fj.deepTag_WvsQCD)
             histos['deepak8md'].Fill(fj.pt, fj.deepTagMD_WvsQCD)
-
-          if fj.msoftdrop>65. and fj.msoftdrop<105.:
-            histos['sdtau21'].Fill(fj.pt, fj.tau21)
+          
+          histos['sdtau21'].Fill(fj.pt, fj.tau21)
 
 timer.Print()
 timer.Continue()
